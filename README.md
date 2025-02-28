@@ -117,7 +117,7 @@ The portfolio is fully responsive and optimized for:
 
 ## 🔗 Links
 
-- Live Demo: [Your Portfolio URL]
+- Live Demo: https://pranayanand2001.github.io/Portfolio/
 - GitHub: [https://github.com/pranayanand2001](https://github.com/pranayanand2001)
 - LinkedIn: [https://www.linkedin.com/in/pranayanand2001](https://www.linkedin.com/in/pranayanand2001)
 
