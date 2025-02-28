@@ -2,16 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-    scroll-behavior: smooth;
-  }
-  
-  
-
 body {
-  cursor: url('data:image/svg+xml,%3Csvg xmlns%3D"http%3A//www.w3.org/2000/svg" viewBox%3D"0 0 24 24" fill%3D"none" stroke%3D"currentColor" stroke-width%3D"2" stroke-linecap%3D"round" stroke-linejoin%3D"round" class%3D"feather feather-mouse-pointer"%3E%3Cpath d%3D"M3 3l8 18 4-8 8-4-18-8z"%3E%3C/path%3E%3C/svg%3E') 0 0, auto;
-} 
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #000;
+  color: white;
+  overflow: hidden;
+  cursor: none; /* Hide the default cursor */
+}
 
-a:hover {
-  cursor: url('data:image/svg+xml,%3Csvg xmlns%3D"http%3A//www.w3.org/2000/svg" viewBox%3D"0 0 24 24" fill%3D"none" stroke%3D"currentColor" stroke-width%3D"2" stroke-linecap%3D"round" stroke-linejoin%3D"round" class%3D"feather feather-hand"%3E%3Cpath d%3D"M12 2l8 7.5v8.5a2 2 0 01-2 2h-12a2 2 0 01-2-2v-8.5l8-7.5z"%3E%3C/path%3E%3C/svg%3E') 0 0, auto;
+/* Custom cursor */
+.cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid white;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: transform 0.2s ease;
+}
+
+.cursor-dot {
+  width: 4px;
+  height: 4px;
+  background-color: white;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: transform 0.1s ease;
+}
+
+/* Hover effects */
+a, button {
+  cursor: none;
+}
+
+a:hover ~ .cursor,
+button:hover ~ .cursor {
+  transform: scale(1.5);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Smooth transitions for section changes */
+.section-transition {
+  transition: all 0.5s ease-in-out;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+html {
+  scroll-behavior: smooth;
 }
