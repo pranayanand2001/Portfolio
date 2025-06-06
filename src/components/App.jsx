@@ -10,7 +10,7 @@ function App() {
 
   const skills = [
     "JavaScript", "React", "Node.js", "Redux",
-    "HTML/CSS", "SQL", "Express.js", "Tailwind CSS"
+    "HTML/CSS", "SQL", "Express.js", "jQuery", "Tailwind CSS"
   ];
 
   const projects = [
