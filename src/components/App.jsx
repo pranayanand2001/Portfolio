@@ -25,9 +25,9 @@ function App() {
       link: "https://pranayanand2001.github.io/ToDoList/"
     },
     {
-      name: "Simon Game",
-      description: "Interactive memory game",
-      link: "https://pranayanand2001.github.io/Simon_Game/"
+      name: "CodeFit",
+      description: "A modern fitness web platform",
+      link: "https://codefit-henna.vercel.app/"
     }
   ];
 
