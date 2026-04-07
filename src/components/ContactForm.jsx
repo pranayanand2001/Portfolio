@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import emailjs from 'emailjs-com';
-import { toast, Toaster } from 'react-hot-toast';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import emailjs from "emailjs-com";
+import { toast, Toaster } from "react-hot-toast";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -17,23 +17,23 @@ const ContactForm = () => {
   // Validation rules
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
+      newErrors.name = "Name is required";
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
+      newErrors.email = "Email is invalid";
     }
 
     if (!formData.subject.trim()) {
-      newErrors.subject = 'Subject is required';
+      newErrors.subject = "Subject is required";
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
+      newErrors.message = "Message is required";
     }
 
     setErrors(newErrors);
@@ -42,55 +42,55 @@ const ContactForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
     // Clear error when user starts typing
     if (errors[name]) {
-      setErrors(prev => ({
+      setErrors((prev) => ({
         ...prev,
-        [name]: ''
+        [name]: "",
       }));
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
-      toast.error('Please fill in all required fields correctly');
+      toast.error("Please fill in all required fields correctly");
       return;
     }
 
     setIsSubmitting(true);
-    
+
     try {
       // Replace these with your EmailJS credentials
       const result = await emailjs.send(
-        'service_p6cqu6m',
-        'template_35deyx3',
+        "service_p6cqu6m",
+        "template_35deyx3",
         {
           name: formData.name,
           email: formData.email,
           subject: formData.subject,
-          message: formData.message
+          message: formData.message,
         },
-        '5rJD90MqQEPVGnaKN'
+        "5rJD90MqQEPVGnaKN",
       );
 
-      if (result.text === 'OK') {
-        toast.success('Message sent successfully!');
+      if (result.text === "OK") {
+        toast.success("Message sent successfully!");
         setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
         });
       }
     } catch (error) {
-      console.error('Error sending email:', error);
-      toast.error('Failed to send message. Please try again.');
+      console.error("Error sending email:", error);
+      toast.error("Failed to send message. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -104,11 +104,11 @@ const ContactForm = () => {
       className="w-full max-w-md mx-auto"
     >
       <Toaster position="top-right" />
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label 
+          <label
             htmlFor="name"
-            className="block text-sm font-medium text-gray-300 mb-2"
+            className="block text-xs font-medium text-gray-300 mb-1"
           >
             Name
           </label>
@@ -118,8 +118,8 @@ const ContactForm = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className={`w-full px-4 py-2 bg-white bg-opacity-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 transition-colors ${
-              errors.name ? 'border-red-500' : 'border-transparent'
+            className={`w-full px-3 py-1 bg-white bg-opacity-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 transition-colors text-sm ${
+              errors.name ? "border-red-500" : "border-transparent"
             }`}
             placeholder="Your name"
           />
@@ -129,9 +129,9 @@ const ContactForm = () => {
         </div>
 
         <div>
-          <label 
+          <label
             htmlFor="email"
-            className="block text-sm font-medium text-gray-300 mb-2"
+            className="block text-xs font-medium text-gray-300 mb-1"
           >
             Email
           </label>
@@ -141,8 +141,8 @@ const ContactForm = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className={`w-full px-4 py-2 bg-white bg-opacity-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 transition-colors ${
-              errors.email ? 'border-red-500' : 'border-transparent'
+            className={`w-full px-3 py-1 bg-white bg-opacity-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 transition-colors text-sm ${
+              errors.email ? "border-red-500" : "border-transparent"
             }`}
             placeholder="your@email.com"
           />
@@ -152,9 +152,9 @@ const ContactForm = () => {
         </div>
 
         <div>
-          <label 
+          <label
             htmlFor="subject"
-            className="block text-sm font-medium text-gray-300 mb-2"
+            className="block text-xs font-medium text-gray-300 mb-1"
           >
             Subject
           </label>
@@ -164,8 +164,8 @@ const ContactForm = () => {
             name="subject"
             value={formData.subject}
             onChange={handleChange}
-            className={`w-full px-4 py-2 bg-white bg-opacity-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 transition-colors ${
-              errors.subject ? 'border-red-500' : 'border-transparent'
+            className={`w-full px-3 py-1 bg-white bg-opacity-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 transition-colors text-sm ${
+              errors.subject ? "border-red-500" : "border-transparent"
             }`}
             placeholder="Message subject"
           />
@@ -175,9 +175,9 @@ const ContactForm = () => {
         </div>
 
         <div>
-          <label 
+          <label
             htmlFor="message"
-            className="block text-sm font-medium text-gray-300 mb-2"
+            className="block text-xs font-medium text-gray-300 mb-1"
           >
             Message
           </label>
@@ -186,9 +186,9 @@ const ContactForm = () => {
             name="message"
             value={formData.message}
             onChange={handleChange}
-            rows="5"
-            className={`w-full px-4 py-2 bg-white bg-opacity-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 transition-colors ${
-              errors.message ? 'border-red-500' : 'border-transparent'
+            rows="3"
+            className={`w-full px-3 py-1 bg-white bg-opacity-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 transition-colors text-sm ${
+              errors.message ? "border-red-500" : "border-transparent"
             }`}
             placeholder="Your message..."
           />
@@ -202,20 +202,36 @@ const ContactForm = () => {
           disabled={isSubmitting}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className={`w-full py-3 px-6 rounded-lg bg-white bg-opacity-10 hover:bg-opacity-20 transition-all duration-300 ${
-            isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+          className={`w-full py-2 px-4 text-sm rounded-lg bg-white bg-opacity-10 hover:bg-opacity-20 transition-all duration-300 ${
+            isSubmitting ? "opacity-50 cursor-not-allowed" : ""
           }`}
         >
           {isSubmitting ? (
             <span className="flex items-center justify-center">
-              <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              <svg
+                className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
               </svg>
               Sending...
             </span>
           ) : (
-            'Send Message'
+            "Send Message"
           )}
         </motion.button>
       </form>
@@ -223,4 +239,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm; 
+export default ContactForm;

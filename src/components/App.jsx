@@ -6,49 +6,56 @@ import ContactForm from "./ContactForm";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 function App() {
-  const [activeSection, setActiveSection] = useState('about');
+  const [activeSection, setActiveSection] = useState("about");
 
   const skills = [
-    "JavaScript", "React", "Node.js", "Redux",
-    "HTML/CSS", "SQL", "Express.js", "jQuery", "Tailwind CSS"
+    "JavaScript",
+    "React",
+    "Node.js",
+    "Redux",
+    "HTML/CSS",
+    "SQL",
+    "Express.js",
+    "jQuery",
+    "Tailwind CSS",
   ];
 
   const projects = [
     {
       name: "Keeper",
       description: "A note-taking app inspired by Google Keep",
-      link: "https://pranayanand2001.github.io/Keeper/"
+      link: "https://pranayanand2001.github.io/Keeper/",
     },
     {
       name: "ToDoList",
       description: "Task management application",
-      link: "https://pranayanand2001.github.io/ToDoList/"
+      link: "https://pranayanand2001.github.io/ToDoList/",
     },
     {
       name: "CodeFit",
       description: "A modern fitness web platform",
-      link: "https://codefit-henna.vercel.app/"
-    }
+      link: "https://codefit-henna.vercel.app/",
+    },
   ];
 
   return (
     <div className="min-h-screen text-white overflow-hidden relative">
       <CustomCursor />
       <BlackHoleBackground />
-      
+
       {/* Content Container */}
       <div className="relative z-10 min-h-screen flex items-center justify-center">
         <div className="max-w-6xl mx-auto px-4 py-8">
           {/* Navigation */}
           <nav className="fixed top-0 left-0 right-0 p-6 flex justify-center space-x-8">
-            {['about', 'projects', 'skills', 'contact'].map((section) => (
+            {["about", "projects", "skills", "contact"].map((section) => (
               <button
                 key={section}
                 onClick={() => setActiveSection(section)}
                 className={`text-lg capitalize ${
-                  activeSection === section 
-                    ? 'text-white border-b-2' 
-                    : 'text-gray-400 hover:text-white'
+                  activeSection === section
+                    ? "text-white border-b-2"
+                    : "text-gray-400 hover:text-white"
                 }`}
               >
                 {section}
@@ -64,18 +71,21 @@ function App() {
             className="mt-20"
           >
             {/* About Section */}
-            {activeSection === 'about' && (
+            {activeSection === "about" && (
               <motion.div
                 initial={{ x: -100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 className="text-center"
               >
                 <h1 className="text-6xl font-bold mb-4">Pranay Anand</h1>
-                <h2 className="text-2xl text-gray-300 mb-8">Software Developer</h2>
+                <h2 className="text-2xl text-gray-300 mb-8">
+                  Software Developer
+                </h2>
                 <p className="text-lg max-w-2xl mx-auto mb-8">
-                  I'm passionate about creating beautiful websites and building web applications 
-                  that enhance user experience. Currently seeking new opportunities to contribute 
-                  my skills and grow as a developer.
+                  I'm passionate about creating beautiful websites and building
+                  web applications that enhance user experience. Currently
+                  seeking new opportunities to contribute my skills and grow as
+                  a developer.
                 </p>
                 <div className="flex justify-center space-x-6">
                   <a
@@ -105,7 +115,7 @@ function App() {
             )}
 
             {/* Projects Section */}
-            {activeSection === 'projects' && (
+            {activeSection === "projects" && (
               <motion.div
                 initial={{ x: 100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
@@ -127,7 +137,7 @@ function App() {
             )}
 
             {/* Skills Section */}
-            {activeSection === 'skills' && (
+            {activeSection === "skills" && (
               <motion.div
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -145,15 +155,18 @@ function App() {
             )}
 
             {/* Contact Section */}
-            {activeSection === 'contact' && (
+            {activeSection === "contact" && (
               <motion.div
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 className="max-w-2xl mx-auto"
               >
-                <h2 className="text-3xl font-bold text-center mb-8">Get In Touch</h2>
+                <h2 className="text-3xl font-bold text-center mb-8">
+                  Get In Touch
+                </h2>
                 <p className="text-gray-300 text-center mb-8">
-                  Have a question or want to work together? Feel free to reach out!
+                  Have a question or want to work together? Feel free to reach
+                  out!
                 </p>
                 <ContactForm />
               </motion.div>
